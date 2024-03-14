@@ -62,6 +62,9 @@ true, provide exact cutpoints for discretisation. \code{cuts} is ignored if
 
 \item{model}{\code{(character(1))}\cr Corresponding pycox model.}
 }
+\value{
+No return value.
+}
 \description{
 Utility function to prepare data for training in a Pycox model.
 Generally used internally only.

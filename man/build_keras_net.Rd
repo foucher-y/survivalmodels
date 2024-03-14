@@ -41,6 +41,9 @@ to all layers.}
 \item{batch_pars}{\code{(list())}\cr Parameters for batch normalisation, see
 \link[keras:layer_batch_normalization]{keras::layer_batch_normalization}.}
 }
+\value{
+No return value.
+}
 \description{
 Utility function to build a Keras MLP.
 }
@@ -48,15 +51,4 @@ Utility function to build a Keras MLP.
 This function is a helper for R users with less Python experience. Currently it is
 limited to simple MLPs and with identical layers.
 More advanced networks will require manual creation with \CRANpkg{keras}.
-}
-\examples{
-\donttest{
-if (requireNamespaces("keras")) {
-  build_keras_net(4L, 2L)
-
-  build_keras_net(n_in = 4L, n_out = 2L, nodes = c(32L, 64L, 32L),
-    activation = "elu", dropout = 0.4)
-}
-}
-
 }

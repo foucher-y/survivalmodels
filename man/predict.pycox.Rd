@@ -13,7 +13,6 @@
   inter_scheme = c("const_hazard", "const_pdf"),
   sub = 10L,
   type = c("survival", "risk", "all"),
-  distr6 = FALSE,
   ...
 )
 }
@@ -50,18 +49,12 @@ Type of predicted value. Choices are survival probabilities over all time-points
 data (\code{"survival"}) or a relative risk ranking (\code{"risk"}), which is the negative mean survival
 time so higher rank implies higher risk of event, or both (\code{"all"}).}
 
-\item{distr6}{\code{(logical(1))}\cr
-If \code{FALSE} (default) and \code{type} is \code{"survival"} or \code{"all"} returns matrix of survival
-probabilities, otherwise returns a \code{\link[distr6:Matdist]{distr6::Matdist()}}.}
-
 \item{...}{\code{ANY} \cr
 Currently ignored.}
 }
 \value{
-A \code{numeric} if \code{type = "risk"}, a \code{\link[distr6:Matdist]{distr6::Matdist()}} (if \code{distr6 = TRUE})
-and \code{type = "survival"}; a \code{matrix} if (\code{distr6 = FALSE}) and \code{type = "survival"} where
-entries are survival probabilities with rows of observations and columns are time-points;
-or a list combining above if \code{type = "all"}.
+A \code{numeric} if \code{type = "risk"}, a \code{matrix} if \code{type = "survival"} where
+entries are survival probabilities with rows of observations and columns are time-points.
 }
 \description{
 Predicted values from a fitted pycox ANN.
@@ -72,12 +65,7 @@ if (requireNamespaces("reticulate")) {
   fit <- coxtime(data = simsurvdata(50))
 
   # predict survival matrix and relative risks
-  predict(fit, simsurvdata(10), type = "all")
-
-  # return as distribution
-  if (requireNamespaces("distr6")) {
-    predict(fit, simsurvdata(10), distr6 = TRUE)
-  }
+  predict(fit, simsurvdata(10), type = "survival")
 }
 }
 

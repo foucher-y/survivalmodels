@@ -9,6 +9,9 @@ requireNamespaces(x)
 \arguments{
 \item{x}{\code{(character())} \cr string naming the packages/name spaces to load.}
 }
+\value{
+No return value.
+}
 \description{
 Helper function for internal use. Vectorises the \link{requireNamespace} function and
 returns \code{TRUE} if all packages, \code{x}, are available and \code{FALSE} otherwise.

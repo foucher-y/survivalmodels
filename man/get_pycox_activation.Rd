@@ -51,6 +51,9 @@ object, otherwise a class.}
 
 \item{value}{\code{(numeric(1))}\cr Passed to \code{threshold}.}
 }
+\value{
+No return value.
+}
 \description{
 Helper function to return a class or constructed object for
 pytorch activation function from \code{torch.nn.modules.activation}.

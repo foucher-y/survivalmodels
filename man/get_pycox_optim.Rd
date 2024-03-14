@@ -58,6 +58,9 @@ get_pycox_optim(
 
 \item{nesterov}{\code{(logical(1))}\cr Passed to \code{sgd}.}
 }
+\value{
+No return value.
+}
 \description{
 Helper function to return a constructed pytorch optimizer from \code{torch.optim}.
 }

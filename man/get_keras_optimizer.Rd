@@ -61,6 +61,9 @@ Default is \code{"adam"}.}
 
 \item{centered}{\code{(logical(1))} \cr Passed to \code{rmsprop}.}
 }
+\value{
+No return value.
+}
 \description{
 Utility function to construct optimiser from \CRANpkg{keras}, primarily for
 internal use.

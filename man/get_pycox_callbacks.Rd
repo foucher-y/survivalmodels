@@ -25,6 +25,9 @@ Passed to \code{torchtuples.callbacks.EarlyStopping}.}
 \item{patience}{\code{(integer(1))}\cr
 Passed to \code{torchtuples.callbacks.EarlyStopping}.}
 }
+\value{
+No return value.
+}
 \description{
 Helper function to return torchtuples callbacks from \code{torchtuples.callbacks}.
 }

@@ -19,6 +19,9 @@ install_keras(
 
 \item{...}{Passed to \link[reticulate:py_install]{reticulate::py_install}.}
 }
+\value{
+No return value.
+}
 \description{
 Stripped back version of \link[keras:install_keras]{keras::install_keras}. Note the
 default for \code{pip} is changed to \code{TRUE}.

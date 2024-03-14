@@ -50,6 +50,9 @@ to all layers.}
 
 \item{init_pars}{\code{(list())}\cr Passed to \link{get_pycox_init}.}
 }
+\value{
+No return value.
+}
 \description{
 Utility function to build an MLP with a choice of activation function and weight
 initialization with optional dropout and batch normalization.
@@ -58,16 +61,4 @@ initialization with optional dropout and batch normalization.
 This function is a helper for R users with less Python experience. Currently it is
 limited to simple MLPs. More advanced networks will require manual creation with
 \CRANpkg{reticulate}.
-}
-\examples{
-\donttest{
-if (requireNamespaces("reticulate")) {
-  build_pytorch_net(4L, 2L, nodes = c(32, 64, 32), activation = "selu")
-
-  # pass parameters to activation and initializer functions
-  build_pytorch_net(4L, 2L, activation = "elu", act_pars = list(alpha = 0.1),
-  init  = "kaiming_uniform", init_pars = list(mode = "fan_out"))
-}
-}
-
 }

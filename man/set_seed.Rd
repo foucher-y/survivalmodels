@@ -14,8 +14,11 @@ set_seed(seed_R, seed_np = seed_R, seed_torch = seed_R)
 \item{seed_torch}{(\code{integer(1)}) \cr \code{seed} passed to \code{numpy$random$seed}.
 Default is same as \code{seed_R}.}
 }
+\value{
+No return value.
+}
 \description{
 To ensure consistent results, a seed has to be set in R
-using \link{set.seed} as usual but also in {numpy} and {torch} via {reticulate}.
+using \code{set.seed} as usual but also in  \code{numpy} and  \code{torch} via  \code{reticulate}.
 Therefore this function simplifies the process into one funciton.
 }

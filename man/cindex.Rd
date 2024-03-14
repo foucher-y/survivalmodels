@@ -17,6 +17,9 @@ Vector of true survival times, must be same length as \code{risk}.}
 \item{...}{(\code{ANY}) \cr
 Further parameters passed to \link[survival:concordance]{survival::concordance}.}
 }
+\value{
+The numeric value of the index.
+}
 \description{
 A thin wrapper around \link[survival:concordance]{survival::concordance} which essentially
 just sets \code{reverse = TRUE}.

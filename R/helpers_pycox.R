@@ -691,32 +691,17 @@ def init_weights(m):
 #' Type of predicted value. Choices are survival probabilities over all time-points in training
 #' data (`"survival"`) or a relative risk ranking (`"risk"`), which is the negative mean survival
 #' time so higher rank implies higher risk of event, or both (`"all"`).
-#' @param distr6 `(logical(1))`\cr
-#' If `FALSE` (default) and `type` is `"survival"` or `"all"` returns matrix of survival
-#' probabilities, otherwise returns a [distr6::Matdist()].
 #' @param ... `ANY` \cr
 #' Currently ignored.
 #'
-#' @examples
-#' \dontrun{
-#' if (requireNamespaces("reticulate")) {
-#'   fit <- coxtime(data = simsurvdata(50))
-#'
-#'   # predict survival matrix and relative risks
-#'   predict(fit, simsurvdata(10), type = "all")
-#'
-#'   # return as distribution
-#'   if (requireNamespaces("distr6")) {
-#'     predict(fit, simsurvdata(10), distr6 = TRUE)
-#'   }
-#' }
-#' }
 #'
 #' @export
 predict.pycox <- function(object, newdata, batch_size = 256L, num_workers = 0L,
                          interpolate = FALSE, inter_scheme = c("const_hazard", "const_pdf"),
-                         sub = 10L, type = c("survival", "risk", "all"), distr6 = FALSE,
+                         sub = 10L, type = c("survival", "risk", "all"),
                          ...) {
+  
+  distr6 <- FALSE
 
   if (!requireNamespace("reticulate", quietly = TRUE)) {
     stop("Package 'reticulate' required but not installed.") # nocov
@@ -756,25 +741,34 @@ predict.pycox <- function(object, newdata, batch_size = 256L, num_workers = 0L,
   surv <- fill_na(t(as.matrix(round(surv, 4))))
   ret <- list()
   stopifnot(nrow(newdata) == nrow(surv))
-
+  
   type <- match.arg(type)
+  
   if (type %in% c("survival", "all")) {
-    if (!distr6 || !requireNamespace("distr6", quietly = TRUE)) {
-      if (distr6) {
-        warning("'distr6' not installed, returning 'surv' as matrix.") # nocov
-      }
+    
+    #if (!distr6 || !requireNamespace("distr6", quietly = TRUE)) {
+    if (!distr6) {
+      # if (distr6) {
+      # warning("'distr6' not installed, returning 'surv' as matrix.") # nocov
+      # }
       ret$surv <- surv
     } else {
-      ret$surv <- distr6::as.Distribution(1 - surv, fun = "cdf",
-        decorators = c("CoreStatistics", "ExoticStatistics")
-      )
+      # ret$surv <- distr6::as.Distribution(1 - surv, fun = "cdf",
+      #  decorators = c("CoreStatistics", "ExoticStatistics")
+      # )
+      as.Distribution <- function(obj, fun, decorators = NULL, vector = FALSE) {
+        UseMethod("as.Distribution")
+        }
+      
+      ret$surv <- as.Distribution(1 - surv, fun = "cdf",
+                                  decorators = c("CoreStatistics", "ExoticStatistics")  )
     }
   }
-
+  
   if (type %in% c("risk", "all")) {
     ret$risk <- surv_to_risk(surv)
   }
-
+  
   if (length(ret) == 1) {
     return(ret[[1]])
   } else {

@@ -20,6 +20,9 @@ well.}
 
 \item{...}{Passed to \link[reticulate:py_install]{reticulate::py_install}.}
 }
+\value{
+No return value.
+}
 \description{
 Installs the python 'pycox' package via reticulate.
 Note the default for \code{pip} is changed to \code{TRUE}.

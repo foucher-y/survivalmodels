@@ -13,6 +13,9 @@ correspond to predicted time-points and should therefore be coercable to
 numeric and increasing. Entries are survival predictions and should
 be (non-strictly) decreasing in each row.}
 }
+\value{
+A numeric vector with the expected number of deaths.
+}
 \description{
 Many methods can be used to reduce a discrete survival
 distribution prediction (i.e. matrix) to a relative risk / ranking

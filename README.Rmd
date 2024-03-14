@@ -1,0 +1,54 @@
+---
+title: "The 'survivalmodels' package"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(survivalmodels)
+set.seed(42)
+```
+
+## What is the 'survivalmodels' package?
+
+The `survivalmodels` package implements neural networks from the Python packages [pycox](https://github.com/havakv/pycox).  Importantly, this a lighter but CRAN-compatible version of the 'survivalmodels' package proposed by Raphael Sonabend based on the version 0.1.19. The complete and updated version is available at this [link](https://github.com/RaphaelS1/survivalmodels). 
+
+## Basic Usage
+
+```{r}
+# load dependencies
+library(survival)
+
+train <- simsurvdata(200)
+
+# Fit the survival neural network
+fit <- deepsurv(Surv(time, status) ~ ., data = train, frac = 0.3, activation = "relu",
+    num_nodes = c(4L, 8L, 4L, 2L), dropout = 0.1, early_stopping = TRUE, epochs = 100L,
+    batch_size = 32L)
+
+# Return survivals for two independent individuals
+test <- simsurvdata(1)
+predict(fit, newdata = test)
+```
+
+## Python Models
+
+The `survivalmodels` package implements models from Python using [reticulate](https://cran.r-project.org/package=reticulate). In order to use these models, the required Python packages must be installed following with [reticulate::py_install](https://rstudio.github.io/reticulate/reference/py_install.html). `survivalmodels` includes a helper function to install the required `pycox` function (with pytorch if also required). Before running any models in this package, if you have not already installed `pycox` please run.
+
+```{r eval=FALSE}
+install_pycox(pip = TRUE, install_torch = FALSE)
+```
+
+## Installation
+
+Install the latest release from CRAN:
+
+```{r eval=FALSE}
+install.packages("survivalmodels")
+```
+
+Install the development version from GitHub:
+
+```{r eval=FALSE}
+remotes::install_github("RaphaelS1/survivalmodels")
+```

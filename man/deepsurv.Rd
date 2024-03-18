@@ -107,20 +107,6 @@ a Cox PH.
 Implemented from the \code{pycox} Python package via \CRANpkg{reticulate}.
 Calls \code{pycox.models.CoxPH}.
 }
-\examples{
-\donttest{
-if (requireNamespaces("reticulate")) {
-  # all defaults
-  deepsurv(data = simsurvdata(50))
-
-  # common parameters
-  deepsurv(data = simsurvdata(50), frac = 0.3, activation = "relu",
-    num_nodes = c(4L, 8L, 4L, 2L), dropout = 0.1, early_stopping = TRUE, epochs = 100L,
-    batch_size = 32L)
-}
-}
-
-}
 \references{
 Katzman, J. L., Shaham, U., Cloninger, A., Bates, J., Jiang, T., & Kluger, Y. (2018).
 DeepSurv: personalized treatment recommender system using a Cox proportional hazards deep neural

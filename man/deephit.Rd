@@ -142,20 +142,7 @@ the single (non-competing) event implementation.
 Implemented from the \code{pycox} Python package via \CRANpkg{reticulate}.
 Calls \code{pycox.models.DeepHitSingle}.
 }
-\examples{
-\donttest{
-if (requireNamespaces("reticulate")) {
-  # all defaults
-  deephit(data = simsurvdata(50))
 
-  # common parameters
-  deephit(data = simsurvdata(50), frac = 0.3, activation = "relu",
-    num_nodes = c(4L, 8L, 4L, 2L), dropout = 0.1, early_stopping = TRUE, epochs = 100L,
-    batch_size = 32L)
-}
-}
-
-}
 \references{
 Changhee Lee, William R Zame, Jinsung Yoon, and Mihaela van der Schaar.
 Deephit: A deep learning approach to survival analysis with competing risks.

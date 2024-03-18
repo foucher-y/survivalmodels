@@ -132,20 +132,6 @@ and predictions of a discrete hazard function, also known as Nnet-Survival.
 Implemented from the \code{pycox} Python package via \CRANpkg{reticulate}.
 Calls \code{pycox.models.LogisticHazard}.
 }
-\examples{
-\donttest{
-if (requireNamespaces("reticulate")) {
-  # all defaults
-  loghaz(data = simsurvdata(50))
-
-  # common parameters
-  loghaz(data = simsurvdata(50), frac = 0.3, activation = "relu",
-    num_nodes = c(4L, 8L, 4L, 2L), dropout = 0.1, early_stopping = TRUE, epochs = 100L,
-    batch_size = 32L)
-}
-}
-
-}
 \references{
 Gensheimer, M. F., & Narasimhan, B. (2018).
 A Simple Discrete-Time Survival Model for Neural Networks, 1–17.

@@ -21,8 +21,7 @@ Suggests:
     keras (>= 2.11.0),
     pseudo,
     reticulate,
-    survival,
-    testthat
+    survival
 LinkingTo:
     Rcpp
 Encoding: UTF-8

@@ -13,16 +13,14 @@ do not already exist in R or for more efficient implementations.
 Useful links:
 \itemize{
   \item \url{https://github.com/RaphaelS1/survivalmodels/}
-  \item Report bugs at \url{https://github.com/RaphaelS1/survivalmodels/issues}
+  \item Report bugs at \url{https://github.com/foucher-y/survivalmodels/issues}
 }
 
 }
 \author{
 \strong{Maintainer}: Yohann Foucher \email{yohann.foucher@univ-poitiers.fr} (\href{https://orcid.org/0000-0003-0330-7457}{ORCID})
-
 Authors:
 \itemize{
   \item Raphael Sonabend (\href{https://orcid.org/0000-0001-9225-4654}{ORCID})
 }
-
 }

@@ -136,20 +136,6 @@ and predictions of a discrete hazard function, also known as Nnet-Survival.
 Implemented from the \code{pycox} Python package via \CRANpkg{reticulate}.
 Calls \code{pycox.models.PCHazard}.
 }
-\examples{
-\donttest{
-if (requireNamespaces("reticulate")) {
-  # all defaults
-  pchazard(data = simsurvdata(50))
-
-  # common parameters
-  pchazard(data = simsurvdata(50), frac = 0.3, activation = "relu",
-    num_nodes = c(4L, 8L, 4L, 2L), dropout = 0.1, early_stopping = TRUE, epochs = 100L,
-    batch_size = 32L)
-}
-}
-
-}
 \references{
 Kvamme, H., & Borgan, Ø. (2019).
 Continuous and discrete-time survival prediction with neural networks.

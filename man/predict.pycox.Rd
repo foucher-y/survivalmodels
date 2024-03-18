@@ -59,14 +59,3 @@ entries are survival probabilities with rows of observations and columns are tim
 \description{
 Predicted values from a fitted pycox ANN.
 }
-\examples{
-\dontrun{
-if (requireNamespaces("reticulate")) {
-  fit <- coxtime(data = simsurvdata(50))
-
-  # predict survival matrix and relative risks
-  predict(fit, simsurvdata(10), type = "survival")
-}
-}
-
-}
